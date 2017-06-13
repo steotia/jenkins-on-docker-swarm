@@ -8,6 +8,8 @@ services:
       - USER_NAME_SECRET=/run/secrets/${JENKINS_USER_SECRET:-jenkins-user}
       - PASSWORD_SECRET=/run/secrets/${JENKINS_PASS_SECRET:-jenkins-pass}
       - COMMAND_OPTIONS=-master http://${JENKINS_IP}/jenkins -labels 'docker' -executors 5
+    networks:
+      - ingress
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /workspace:/workspace
@@ -21,5 +23,9 @@ secrets:
   jenkins-user:
     external: true
   jenkins-pass:
+    external: true
+
+networks:
+  ingress:
     external: true
 
