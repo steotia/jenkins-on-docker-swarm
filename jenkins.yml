@@ -6,6 +6,7 @@ services:
     image: jenkinsci/jenkins:lts-alpine
     ports:
       - "50000:50000"
+      - "8083:8080"
     environment:
       - JENKINS_OPTS="--prefix=/jenkins"
     networks:
