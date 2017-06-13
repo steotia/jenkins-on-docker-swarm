@@ -9,7 +9,7 @@ services:
     environment:
       - JENKINS_OPTS="--prefix=/jenkins"
     networks:
-      - overlay
+      - ingress
     volumes:
       - main:/var/jenkins_home
     deploy:
@@ -24,7 +24,7 @@ volumes:
     driver: local
 
 networks:
-  overlay:
+  ingress:
     external: true
 
 # docker service create --name jenkins \
